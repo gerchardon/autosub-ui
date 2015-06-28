@@ -1,0 +1,10 @@
+{
+  "name": "autosub-ui",
+  "dependencies": {
+    "marionette": "~2.4.1",
+    "bootstrap": "~3.3.4",
+    "mousetrap": "~1.5.2",
+    "font-awesome": "~4.3.0",
+    "requirejs": "~2.1.18"
+  }
+}
