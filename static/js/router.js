@@ -1,10 +1,7 @@
 define(['marionette'], function (Mn) {
   'use strict';
   var controller = {
-    someMethod: function() {
-      console.log('javascript call');
-      console.log(this);
-      console.log('AppRouter.someMethod()');
+    index: function() {
       var model = new Backbone.Model({
         name: "Marionette",
       });
@@ -21,20 +18,9 @@ define(['marionette'], function (Mn) {
   var MyAppRouter = Mn.AppRouter.extend({
     controller: controller,
     appRoutes: {
-      "": "someMethod"
+      "": "index"
     },
-    someMethod: function() {
-
-    },
-
-    /* standard routes can be mixed with appRoutes/Controllers above */
-    routes : {
-      "" : "someMethod"
-    }
-    // someOtherMethod : function(){
-    //   // do something here.
-    // }
-
+    routes: {}
   });
   return MyAppRouter;
 });
