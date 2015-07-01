@@ -1,17 +1,12 @@
-define(['marionette'], function (Mn) {
+define(['marionette', 'views/all'], function (Mn, Views) {
   'use strict';
   var controller = {
     index: function() {
       var model = new Backbone.Model({
         name: "Marionette",
       });
-
-      var MyView = Mn.ItemView.extend({
-        // tagName: 'li',
-        className: 'movie',
-        template: _.template('<%- name %>'),
-      });
-      MyApp.mainRegion.show(new MyView({model: model}));
+      var v = new Views.index({model: model});
+      MyApp.mainRegion.show(v);
     }
   };
 
