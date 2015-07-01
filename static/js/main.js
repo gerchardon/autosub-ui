@@ -8,7 +8,7 @@ requirejs.config({
 });
 
 requirejs(['jquery', 'marionette', 'backbone', 'router'], function($, Mn, Backbone, MyAppRouter) {
-  // MyApp Global (?? TODO: Other ...)
+  // FIXME: MyApp Global ?
   MyApp = new Mn.Application({
     someMethod: function(){
       console.log('MyApp.someMethod()');
@@ -19,9 +19,6 @@ requirejs(['jquery', 'marionette', 'backbone', 'router'], function($, Mn, Backbo
     MyApp.addRegions({
       mainRegion: '#main'
     });
-  });
-  MyApp.addInitializer(function(options){
-
   });
 
   MyApp.addInitializer(function(options){
