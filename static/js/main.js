@@ -3,16 +3,19 @@ requirejs.config({
     jquery: '../vendor/jquery/dist/jquery',
     marionette: '../vendor/marionette/lib/backbone.marionette.min',
     backbone: '../vendor/backbone/backbone-min',
-    underscore: '../vendor/underscore/underscore-min'
+    underscore: '../vendor/underscore/underscore-min',
+    text: '../vendor/text/text'
   }
 });
 
-requirejs(['jquery', 'marionette', 'backbone', 'router'], function($, Mn, Backbone, MyAppRouter) {
-  // FIXME: MyApp Global ?
-  MyApp = new Mn.Application({
-    someMethod: function(){
-      console.log('MyApp.someMethod()');
-    }
+requirejs(['jquery', 'marionette', 'backbone', 'router', 'models/subs'], function($, Mn, Backbone, AppRouter, Subs) {
+
+  MyApp = new Mn.Application();
+
+  // In renderer process (web page).
+  var ipc = require('ipc');
+  ipc.on('autosub-subs', function(results) {
+    Subs.reset(results);
   });
 
   MyApp.addInitializer(function(options){
@@ -21,12 +24,11 @@ requirejs(['jquery', 'marionette', 'backbone', 'router'], function($, Mn, Backbo
     });
   });
 
-  MyApp.addInitializer(function(options){
-    new MyAppRouter();
+  MyApp.on('start', function(){
+    new AppRouter();
     Backbone.history.start();
+    ipc.send('autosub', 'ready');
   });
 
   MyApp.start();
-  // Load some initial data, and then start our application
-  // loadInitialData().then(app.start);
 });

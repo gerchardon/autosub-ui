@@ -1,11 +1,8 @@
-define(['marionette', 'views/all'], function (Mn, Views) {
+define(['marionette', 'views/all', 'models/subs'], function (Mn, Views, Subs) {
   'use strict';
   var controller = {
     index: function() {
-      var model = new Backbone.Model({
-        name: "Marionette",
-      });
-      var v = new Views.index({model: model});
+      var v = new Views.index({collection: Subs});
       MyApp.mainRegion.show(v);
     }
   };

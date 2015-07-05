@@ -5,6 +5,7 @@
     "bootstrap": "~3.3.4",
     "mousetrap": "~1.5.2",
     "font-awesome": "~4.3.0",
-    "requirejs": "~2.1.18"
+    "requirejs": "~2.1.18",
+    "text": "~2.0.14"
   }
 }

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "main": "main.js",
   "dependencies": {
-    "express": "^4.13.0"
+    "autosub": "gerchardon/autosub",
+    "debug": "^2.2.0"
   }
 }
