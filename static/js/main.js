@@ -4,17 +4,21 @@ requirejs.config({
     marionette: '../vendor/marionette/lib/backbone.marionette.min',
     backbone: '../vendor/backbone/backbone-min',
     underscore: '../vendor/underscore/underscore-min',
-    text: '../vendor/text/text'
+    text: '../vendor/text/text',
+    toastr: '../vendor/toastr/toastr.min'
   }
 });
 
-requirejs(['jquery', 'marionette', 'backbone', 'router', 'models/subs'], function($, Mn, Backbone, AppRouter, Subs) {
+requirejs(['jquery', 'marionette', 'backbone', 'underscore', 'toastr', 'router', 'models/subs'], function($, Mn, Backbone, _, Toastr, AppRouter, Subs) {
 
   MyApp = new Mn.Application();
 
   // In renderer process (web page).
   var ipc = require('ipc');
   ipc.on('autosub-subs', function(results) {
+    if(_.isEmpty(results)) {
+      Toastr.info('No Subtitles found.');
+    }
     Subs.reset(results);
   });
 

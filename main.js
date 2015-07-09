@@ -1,15 +1,19 @@
 var path = require('path');
+var debug = require("debug")('autosub-ui');
 
 if(!('CONFIG_DIR' in process.env)){
-  // process.env.NODE_CONFIG_DIR='/home/ubuntu/.config/autosub/';
-  process.env.NODE_CONFIG_DIR=path.join(process.env.APPDATA, 'AutoSubUi');
+  if ('APPDATA' in process.env) {
+    process.env.NODE_CONFIG_DIR=path.join(process.env.APPDATA, 'AutoSubUi');
+  }else{
+    debug('Use default config dir /home/ubuntu/.config/autosub/');
+    process.env.NODE_CONFIG_DIR='/home/ubuntu/.config/autosub/';
+  }
 }
 
 var videoFile = process.argv[process.argv.length - 1];
 var app = require('app');  // Module to control application life.
 
 var BrowserWindow = require('browser-window');  // Module to create native browser window.
-var debug = require("debug")('autosub-ui');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the javascript object is GCed.
