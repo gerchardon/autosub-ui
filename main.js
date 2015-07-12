@@ -1,3 +1,4 @@
+var app = require('app');  // Module to control application life.
 var path = require('path');
 var debug = require("debug")('autosub-ui');
 
@@ -10,8 +11,6 @@ if(!('CONFIG_DIR' in process.env)){
   }
 }
 
-var videoFile = process.argv[process.argv.length - 1];
-var app = require('app');  // Module to control application life.
 
 var BrowserWindow = require('browser-window');  // Module to create native browser window.
 
@@ -29,6 +28,15 @@ app.on('window-all-closed', function() {
 // This method will be called when Electron has done everything
 // initialization and ready for creating browser windows.
 app.on('ready', function() {
+  var squirrel = require('./squirrel-update');
+  if(squirrel.handleStartupEvent(app, process.argv[1])){
+    return ;
+  }
+  var videoFile = process.argv[process.argv.length - 1];
+  if(videoFile === null || videoFile === ''){
+    app.quit();
+    return ;
+  }
   debug('test log with debug');
 
   var path = require('path');
@@ -46,7 +54,7 @@ app.on('ready', function() {
   ipc.on('autosub', function(event, arg) {
     var Autosub = require('autosub');
     new Autosub()
-      .search(path.basename(videoFile))
+      .search(path.basename(videoFile), videoFile)
       .then(function(results) {
         debug('Results find, send to client');
         var i = 0;

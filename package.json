@@ -1,9 +1,12 @@
 {
-  "name": "myapp",
+  "name": "autosub",
   "version": "0.1.0",
   "main": "main.js",
+  "description": "Autosub UI",
   "dependencies": {
     "autosub": "gerchardon/autosub",
-    "debug": "^2.2.0"
-  }
+    "debug": "^2.2.0",
+    "q": "^1.4.1"
+  },
+  "private": true
 }
