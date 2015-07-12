@@ -6,4 +6,5 @@ install:
   - npm install
   - cd build
   - npm install
-  - node_modules/bin/grunt
+  - npm install -g grunt-cli
+  - grunt
