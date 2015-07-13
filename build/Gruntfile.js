@@ -5,10 +5,11 @@ module.exports = function(grunt) {
   "use strict";
   require('load-grunt-tasks')(grunt);
 
-  var tmpDir = os.tmpdir();
-  // grunt.option('build-dir')
+  //var tmpDir = os.tmpdir();
+  var tmpDir = 'tmp';
   var buildDir = path.join(tmpDir, 'atom-build');
   var shellAppDir = path.join(buildDir, 'AutoSub');
+  grunt.file.mkdir(shellAppDir);
   var asarFile = path.join(shellAppDir, 'resources', 'app.asar');
 
   grunt.initConfig({

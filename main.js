@@ -1,10 +1,17 @@
 var app = require('app');  // Module to control application life.
+
+var squirrel = require('./squirrel-update');
+if(squirrel.handleStartupEvent(app, process.argv[1])){
+  return ;
+}
+
 var path = require('path');
 var debug = require("debug")('autosub-ui');
+var tools = require('video-tools');
 
 if(!('CONFIG_DIR' in process.env)){
   if ('APPDATA' in process.env) {
-    process.env.NODE_CONFIG_DIR=path.join(process.env.APPDATA, 'AutoSubUi');
+    process.env.NODE_CONFIG_DIR=path.join(process.env.APPDATA, 'AutoSub');
   }else{
     debug('Use default config dir /home/ubuntu/.config/autosub/');
     process.env.NODE_CONFIG_DIR='/home/ubuntu/.config/autosub/';
@@ -24,19 +31,18 @@ app.on('window-all-closed', function() {
     app.quit();
 });
 
+var videoFile = process.argv[process.argv.length - 1];
+if(tools.info(videoFile) === null){
+  debug('no video quit');
+  // TODO: show option view
+  app.quit();
+  return ;
+}
 
 // This method will be called when Electron has done everything
 // initialization and ready for creating browser windows.
 app.on('ready', function() {
-  var squirrel = require('./squirrel-update');
-  if(squirrel.handleStartupEvent(app, process.argv[1])){
-    return ;
-  }
   var videoFile = process.argv[process.argv.length - 1];
-  if(videoFile === null || videoFile === ''){
-    app.quit();
-    return ;
-  }
   debug('test log with debug');
 
   var path = require('path');

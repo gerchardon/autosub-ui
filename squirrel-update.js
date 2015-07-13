@@ -67,10 +67,10 @@ exports.handleStartupEvent = function(app, squirrelCommand) {
   switch (squirrelCommand) {
     case '--squirrel-install':
     case '--squirrel-updated':
-      createShortcuts().then(installContextMenu()).done(function(){app.quit();});
+      createShortcuts().then(installContextMenu()).fin(function(){app.quit();});
       return true;
     case '--squirrel-uninstall':
-      spawnUpdate(['--removeShortcut', exeName]).done(function(){app.quit();});
+      spawnUpdate(['--removeShortcut', exeName]).fin(function(){app.quit();});
       return true;
     case '--squirrel-obsolete':
       app.quit();
