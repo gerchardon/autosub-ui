@@ -32,9 +32,8 @@ app.on('window-all-closed', function() {
 });
 
 var videoFile = process.argv[process.argv.length - 1];
-if(tools.info(videoFile) === null){
+if(!tools.isMovie(videoFile)){
   debug('no video quit');
-  // TODO: show option view
   app.quit();
   return ;
 }
