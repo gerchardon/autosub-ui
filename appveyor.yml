@@ -8,3 +8,8 @@ install:
   - npm install
   - npm install -g grunt-cli
   - grunt
+
+artifacts:
+  - path: '*.nupkg'
+  - path: Setup.exe
+    name: AutoSub Setup
