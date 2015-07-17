@@ -1,5 +1,18 @@
+version: 1.0.{build}
+
 environment:
   nodejs_version: "0.12"
+
+platform:
+  - x86
+
+configuration:
+  - Release
+
+before_build:
+  - cmd: ECHO before_build
+after_build:
+  - cmd: ECHO after_build
 
 install:
   - ps: Install-Product node $env:nodejs_version
