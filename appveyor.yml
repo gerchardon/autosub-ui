@@ -12,8 +12,8 @@ install:
   - grunt
 
 artifacts:
-  - path: '*.nupkg'
-  - path: Setup.exe
+  - path: '**/*.nupkg'
+  - path: '**/installer/Setup.exe'
     name: AutoSub Setup
 
 # Don't actually build.
