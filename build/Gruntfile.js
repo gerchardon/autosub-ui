@@ -25,7 +25,7 @@ module.exports = function(grunt) {
       version: '0.29.2',
       outputDir: shellAppDir,
       appDir: '../',
-      rebuild: true
+      rebuild: false
     },
     'create-windows-installer': {
       appDirectory: shellAppDir,
