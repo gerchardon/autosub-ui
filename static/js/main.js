@@ -3,13 +3,14 @@ requirejs.config({
     jquery: '../vendor/jquery/dist/jquery',
     marionette: '../vendor/marionette/lib/backbone.marionette.min',
     backbone: '../vendor/backbone/backbone-min',
+    lodash: '../vendor/lodash/lodash.min',
     underscore: '../vendor/underscore/underscore-min',
     text: '../vendor/text/text',
     toastr: '../vendor/toastr/toastr.min'
   }
 });
 
-requirejs(['jquery', 'marionette', 'backbone', 'underscore', 'toastr', 'router', 'models/subs'], function($, Mn, Backbone, _, Toastr, AppRouter, Subs) {
+requirejs(['jquery', 'marionette', 'backbone', 'lodash', 'toastr', 'router', 'models/subs'], function($, Mn, Backbone, _, Toastr, AppRouter, Subs) {
 
   MyApp = new Mn.Application();
 

@@ -1,4 +1,4 @@
-define(['marionette', 'underscore',
+define(['marionette', 'lodash',
 'text!views/table.html',
 'text!views/sub.html',
 'text!views/empty.html'],
