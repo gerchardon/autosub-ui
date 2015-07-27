@@ -2,7 +2,7 @@
 
 ## Usage
 
-Install with windows installer [link](https://ci.appveyor.com/project/gerchardon/autosub-ui/build/artifacts)
+Install with windows installer [link](https://github.com/gerchardon/autosub-ui/releases)
 
 Configure OpenSubtitle user with a file in C:\Users\[USER]\AppData\Roaming\AutoSub\default.yaml :
 
