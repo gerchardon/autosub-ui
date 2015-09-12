@@ -11,10 +11,13 @@ var tools = require('video-tools');
 
 if(!('CONFIG_DIR' in process.env)){
   if ('APPDATA' in process.env) {
+    // Windows Mode
     process.env.NODE_CONFIG_DIR=path.join(process.env.APPDATA, 'AutoSub');
   }else{
-    debug('Use default config dir /home/ubuntu/.config/autosub/');
-    process.env.NODE_CONFIG_DIR='/home/ubuntu/.config/autosub/';
+    // Linux Mode
+    var CONF = process.env.HOME + '/.config/autosub/';
+    debug('Use default config dir %s', CONF);
+    process.env.NODE_CONFIG_DIR=CONF;
   }
 }
 
